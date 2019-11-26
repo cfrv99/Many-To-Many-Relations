@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [{
+  "provider": "filesystem",
+  "library": "node_modules/jquery-ellipsis/dist/",
+  "destination": "wwwroot/lib/jquery-ellepsis/",
+  "files": [
+    "jquery.ellipsis.min.js"
+  ]
+}
+]
+}

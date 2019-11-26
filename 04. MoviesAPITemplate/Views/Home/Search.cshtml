@@ -1,0 +1,73 @@
+﻿@model SearchViewModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.Title != null)
+{
+    <h1>Search results by title: @Model.Title</h1>
+    <p>Total results: @Model.TotalResults</p>
+
+    <!-- shop main wrapper start -->
+    <div class="order-1 order-lg-2">
+        <div class="shop-product-wrapper">
+            <!-- product item list wrapper start -->
+            <div class="shop-product-wrap grid-view row mbn-30">
+                @foreach (var item in Model.Movies)
+                {
+                    <!-- product single item start -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- product grid start -->
+                        <div class="product-item">
+                            <figure class="product-thumb">
+                                <div>
+                                    <img error-src="/images/placeholder.png" src="@item.Poster" alt="product">
+                                </div>
+                                <div class="button-group">
+                                    <a href="#" data-toggle="modal" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="lnr lnr-magnifier"></i></span></a>
+                                </div>
+                                <div class="box-cart">
+                                    <a asp-controller="Home" asp-action="Movie" asp-route-id="@item.imdbID" class="btn btn-cart">Details</a>
+                                </div>
+                            </figure>
+                            <div class="product-caption">
+                                <p class="product-name">
+                                    <a asp-controller="Home" asp-action="Movie" asp-route-id="@item.imdbID">@item.Title</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- product grid end -->
+                    </div>
+                    <!-- product single item start -->
+                }
+
+            </div>
+            <!-- product item list wrapper end -->
+
+            <vc:pagination total-pages="@Model.TotalPages"
+                           current-page="@Model.CurrentPage"
+                           controller="Home"
+                           action="Search"
+                           route-params="@(new Dictionary<string, string>{ { "title", Model.Title } })">
+            </vc:pagination>
+        </div>
+    </div>
+    <!-- shop main wrapper end -->
+
+    @*@await Component.InvokeAsync("Pagination", new {  })*@
+}
+else
+{
+    <h1>No results!</h1>
+}
+
+<partial name="_ModalWindowPartial" />
+
+
+
+@section Scripts
+{
+    <script>
+        initPagination(@Model.CurrentPage, @Model.TotalPages, '@Url.ActionLink("SearchResult", "Home", new { title = Model.Title } )');
+    </script>
+}

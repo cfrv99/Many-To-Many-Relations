@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if (TempData.ContainsKey("Status"))
+{
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    @TempData["Status"]
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+}
+
+<div class="list-group">
+
+    @foreach (var item in Model)
+    {
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@item.Title</h5>
+                <small>@item.Date</small>
+            </div>
+            <p class="mb-1">@item.Content</p>
+        </a>
+    }
+</div>
+
+<a asp-controller="Post" asp-action="Add">Add new post</a>

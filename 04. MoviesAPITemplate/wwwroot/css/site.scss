@@ -1,0 +1,47 @@
+﻿.card h5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 45px;
+}
+
+.card {
+
+    .img-container {
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+        }
+
+        .img-blur {
+            filter: blur(10px);
+            background-position: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+    }
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 75px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

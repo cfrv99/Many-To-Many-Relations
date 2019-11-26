@@ -1,0 +1,210 @@
+﻿@model MovieDetailsViewModel
+
+@{
+    ViewData["Title"] = "Movie";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <img src="@Model.Movie.Poster" class="img-fluid" alt="Alternate Text" />
+    </div>
+    <div class="col-md-9">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Year)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Year)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Rated)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Rated)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Released)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Released)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Runtime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Runtime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Genre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Genre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Director)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Director)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Writer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Writer)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Actors)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Actors)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Plot)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Plot)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Language)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Language)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Country)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Country)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Awards)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Awards)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Metascore)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Metascore)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.imdbRating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.imdbRating)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.imdbVotes)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.imdbVotes)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.imdbID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.imdbID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Type)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Type)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.DVD)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.DVD)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.BoxOffice)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.BoxOffice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Production)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Production)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Website)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Website)
+            </dd>
+        </dl>
+    </div>
+
+</div>
+
+<!-- comment area start -->
+
+@if (Model.Reviews.Count() == 0)
+{
+    <h3>No comments!</h3>
+}
+else
+{
+    <div class="comment-section section-space">
+        <h3>@Model.Reviews.Count() comments</h3>
+        <ul>
+            @foreach (var item in Model.Reviews)
+            {
+                <li>
+                    <div class="author-avatar">
+                        <img src="~/img/blog/comment-icon.png" alt="">
+                    </div>
+                    <div class="comment-body">
+                        <h5 class="comment-author">@item.Name</h5>
+                        <div class="comment-post-date">
+                            @item.Email
+                        </div>
+                        <p>@Html.Raw(item.Text)</p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+<!-- comment area end -->
+<!-- start blog comment box -->
+<div class="blog-comment-wrapper mb-4">
+    <h3>leave a reply</h3>
+    <p>Your email address will not be published. Required fields are marked *</p>
+    <form asp-controller="Home" asp-action="PostReview" method="post">
+        <input hidden name="imdbId" value="@Model.Movie.imdbID" />
+        <div class="comment-post-box">
+            <div class="row">
+                <div class="col-12">
+                    <label>comment</label>
+                    <textarea name="text" placeholder="Write a comment"></textarea>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <label>Name</label>
+                    <input name="name" type="text" class="coment-field" placeholder="Name">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <label>Email</label>
+                    <input name="email" type="text" class="coment-field" placeholder="Email">
+                </div>
+                <div class="col-12">
+                    <div class="coment-btn">
+                        <input class="btn btn__bg" type="submit" name="submit" value="Post Comment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- start blog comment box -->

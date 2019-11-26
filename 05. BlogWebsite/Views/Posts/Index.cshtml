@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData.ContainsKey("Status"))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Status"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<!-- blog main wrapper start -->
+<div class="blog-main-wrapper section-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 order-2 order-lg-2">
+                <div class="blog-sidebar-wrapper">
+                    <div class="blog-sidebar">
+                        <h3 class="title">search</h3>
+                        <div class="sidebar-serch-form">
+                            <form action="#">
+                                <input type="text" class="search-field" placeholder="search here">
+                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div> <!-- single sidebar end -->
+                    <div class="blog-sidebar">
+                        <h3 class="title">categories</h3>
+                        <ul class="blog-archive blog-category">
+                            <li><a href="#">Barber (10)</a></li>
+                            <li><a href="#">fashion (08)</a></li>
+                            <li><a href="#">handbag (07)</a></li>
+                            <li><a href="#">Jewelry (14)</a></li>
+                            <li><a href="#">food (10)</a></li>
+                        </ul>
+                    </div> <!-- single sidebar end -->
+                    <div class="blog-sidebar">
+                        <h3 class="title">Blog Archives</h3>
+                        <ul class="blog-archive">
+                            <li><a href="#">January (10)</a></li>
+                            <li><a href="#">February (08)</a></li>
+                            <li><a href="#">March (07)</a></li>
+                            <li><a href="#">April (14)</a></li>
+                            <li><a href="#">May (10)</a></li>
+                        </ul>
+                    </div> <!-- single sidebar end -->
+                    <div class="blog-sidebar">
+                        <h3 class="title">recent post</h3>
+                        <div class="recent-post">
+                            <div class="recent-post-item">
+                                <figure class="product-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="~/img/blog/blog-img1.jpg" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="recent-post-description">
+                                    <div class="product-name">
+                                        <h4><a href="blog-details.html">Auctor gravida enim</a></h4>
+                                        <p>march 10 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-post-item">
+                                <figure class="product-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="~/img/blog/blog-img2.jpg" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="recent-post-description">
+                                    <div class="product-name">
+                                        <h4><a href="blog-details.html">gravida auctor dnim</a></h4>
+                                        <p>march 18 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-post-item">
+                                <figure class="product-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="~/img/blog/blog-img3.jpg" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="recent-post-description">
+                                    <div class="product-name">
+                                        <h4><a href="blog-details.html">enim auctor gravida</a></h4>
+                                        <p>march 14 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- single sidebar end -->
+                    <div class="blog-sidebar">
+                        <h3 class="title">Tags</h3>
+                        <ul class="blog-tags">
+                            <li><a href="#">camera</a></li>
+                            <li><a href="#">computer</a></li>
+                            <li><a href="#">bag</a></li>
+                            <li><a href="#">watch</a></li>
+                            <li><a href="#">smartphone</a></li>
+                            <li><a href="#">shoes</a></li>
+                        </ul>
+                    </div> <!-- single sidebar end -->
+                </div>
+            </div>
+            <div class="col-lg-9 order-1 order-lg-1">
+                <div class="blog-item-wrapper">
+                    <div class="row mbn-30">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-6">
+                                <!-- blog post item start -->
+                                <div class="blog-post-item mb-30">
+                                    <figure class="blog-thumb">
+                                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">
+                                            <img src="@item.ImageUrl" alt="blog image">
+                                        </a>
+                                    </figure>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title blog-title-large">
+                                            <a href="blog-details.html">@item.Title</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <p>@item.Date</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- blog post item end -->
+                            </div>
+                        }
+                    </div>
+                    <!-- start pagination area -->
+                    <div class="paginatoin-area text-center">
+                        <ul class="pagination-box">
+                            <li><a class="previous" href="#"><i class="lnr lnr-chevron-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a class="next" href="#"><i class="lnr lnr-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- end pagination area -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- blog main wrapper end -->
+
+<a asp-controller="Post" asp-action="Add">Add new post</a>

@@ -1,0 +1,17 @@
+﻿body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 75px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.blog-thumb img {
+    height: 250px;
+    object-fit: cover;
+}

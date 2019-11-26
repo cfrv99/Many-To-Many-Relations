@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Movie>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Movie search</h1>
+    <form method="get" asp-controller="Home" asp-action="Search" class="input-group mb-3">
+        <input required name="title" type="text" class="form-control" placeholder="Movie name">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary">Search</button>
+        </div>
+    </form>
+</div>
+
+@if (Model.Count() > 0)
+{
+    <h2>Recent movies:</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <partial name="_MovieCardPartial" model="item" />
+            </div>
+        }
+    </div>
+}
+
+<partial name="_ModalWindowPartial" />
+
+
+@*
+    @Html.EmailLink("skripnikov@itstep.org")
+    @Html.EmailLink("imran@itstep.org", "Imran")
+*@
+
+@*<email-link email="skripnikov@itstep.org" title="Gleb Skripnikov"></email-link>*@
+@*<a my-email="skripnikov@itstep.org" my-title="Gleb Skripnikov" title="Send email" class="text-danger"></a>*@
